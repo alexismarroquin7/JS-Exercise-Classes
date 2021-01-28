@@ -84,37 +84,42 @@ class Car {
     this.odometer = 0;
   }
   fill(gallons){
-    return this.tank += gallons;
+    return this.tank = this.tank + gallons;
   }
   // drive(distance){
-  //   const range = distance / this.milesPerGallon;
-  //   if(this.odometer < range && ){
+  //   const range = this.tank * this.milesPerGallon;
+  //   if(distance < range && this.tank > 0){
   //     this.odometer++;
   //     this.tank--;
   //   } else {
+  //     this.odometer = this.tank * this.milesPerGallon;
+  //     // this.tank = 0;
   //     return `I ran out of fuel at ${this.odometer} miles!`
   //   }
-  // }
+  drive(distance){
+    const range = this.milesPerGallon * this.tank;
+    console.log(`The distance desired is ${distance} miles`);
+    console.log(`The Tank is at ${this.tank} gallons`);
+    console.log(`The milesPerGallon is ${this.milesPerGallon}`);
+    console.log(`The range is ${range}`);
+    for(let i = 0; i <= range; i++){
+        this.odometer = this.odometer + 1;
+        this.tank = this.tank - 1;
+        console.log(this.odometer);
+        console.log(this.tank);
+        if(this.tank === 0){
+            return `I ran out of gas at ${this.odometer} miles`
+        }
+    }
+
+  }
   
 }
 
-const myCar = new Car({
-  model: 'Toyota',
-  milesPerGallon: 5,
-});
-console.log(myCar.fill(20));
-// console.log(myCar.drive(100));
-
-// drive(distance){
-//   this.odometer = distance;
-//   console.log(distance);
-//   console.log(this.odometer);
-//   this.tank = this.odometer / this.milesPerGallon;
-//   console.log(`This is the odometer value: ${this.odometer}`);
-//   console.log(`This is the MPG value: ${this.milesPerGallon}`);
-//   console.log(`This is the tank value: ${this.tank}`);
-// }
-
+const myCar = new Car('Toyota', 5);
+console.log(myCar.fill(10));
+console.log(myCar.milesPerGallon);
+console.log(myCar.drive(50));
 
   
   /*
@@ -184,9 +189,27 @@ class Instructor extends Lambdasian {
           + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
- class Student {
-     
- }
+class Student extends Lambdasian {
+    constructor(attrs){
+      super(attrs);
+      this.previousBackground = attrs.previousBackground;
+      this.className = attrs.className;
+      this.favSubjects = attrs.favSubjects;
+    }
+    listSubjects(){
+      const myFaveSubjects = this.favSubjects.reduce(function(accumulator, currentItem){
+        return accumulator + ' , ' + currentItem;
+      });
+      return `Loving ${myFaveSubjects}!`;
+    }
+    PRAssignment(subject){
+      return `${this.name} has submitted a PR for ${subject}`
+    }
+    sprintChallenge(subject){
+      return `${this.name} has begun sprint challenge on ${subject}`
+    }
+}
+
   
   /*
     TASK 6
