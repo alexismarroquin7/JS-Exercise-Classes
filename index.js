@@ -162,7 +162,10 @@ class Instructor extends Lambdasian {
     this.catchPhrase = attrs.catchPhrase;
   }
   demo(subject){
-    return `Today we are learning about ${this.subject}`
+    return `Today we are learning about ${subject}`
+  }
+  grade(subject, student){
+    return `${student} receives a perfect score on ${subject}`
   }
 
 }
