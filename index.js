@@ -86,7 +86,7 @@ class Car {
   fill(gallons){
     return this.tank = this.tank + gallons;
   }
-  // drive(distance){
+  drive(distance){
   //   const range = this.tank * this.milesPerGallon;
   //   if(distance < range && this.tank > 0){
   //     this.odometer++;
@@ -95,31 +95,33 @@ class Car {
   //     this.odometer = this.tank * this.milesPerGallon;
   //     // this.tank = 0;
   //     return `I ran out of fuel at ${this.odometer} miles!`
-  //   }
-  drive(distance){
-    const range = this.milesPerGallon * this.tank;
-    console.log(`The distance desired is ${distance} miles`);
-    console.log(`The Tank is at ${this.tank} gallons`);
-    console.log(`The milesPerGallon is ${this.milesPerGallon}`);
-    console.log(`The range is ${range}`);
-    for(let i = 0; i <= range; i++){
-        this.odometer = this.odometer + 1;
-        this.tank = this.tank - 1;
-        console.log(this.odometer);
-        console.log(this.tank);
-        if(this.tank === 0){
-            return `I ran out of gas at ${this.odometer} miles`
-        }
-    }
-
   }
+
+  // drive(distance){
+  //   const range = this.milesPerGallon * this.tank;
+  //   // console.log(`The distance desired is ${distance} miles`);
+  //   // console.log(`The Tank is at ${this.tank} gallons`);
+  //   // console.log(`The milesPerGallon is ${this.milesPerGallon}`);
+  //   // console.log(`The range is ${range}`);
+  //   for(let i = 0; i <= range; i++){
+  //       this.odometer = this.odometer + 1;
+  //       this.tank = this.tank - 1;
+  //       console.log(this.odometer);
+  //       console.log(this.tank);
+  //       if(this.tank === 0){
+  //         this.tank = 0;
+  //         return `I ran out of gas at ${this.odometer} miles`
+  //       }
+  //   }
+
+  // }
   
 }
 
-const myCar = new Car('Toyota', 5);
-console.log(myCar.fill(10));
-console.log(myCar.milesPerGallon);
-console.log(myCar.drive(50));
+// const myCar = new Car('Toyota', 5);
+// console.log(myCar.fill(10));
+// console.log(myCar.milesPerGallon);
+// console.log(myCar.drive(50));
 
   
   /*
@@ -224,9 +226,30 @@ class Student extends Lambdasian {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
- }
+class ProjectManager extends Instructor {
+  constructor(attrs){
+    super(attrs);
+    this.gradClassName = attrs.gradClassName;
+    this.favInstructor = attrs.favInstructor;
+  }
+  grade(student, subject){
+    // return `${student} receives a perfect score on ${subject}`
+    const myStudentName = student.map(function(item) {
+      return item.name;
+    });
+    return `${myStudentName} receives a perfect score on ${subject}`
+    // const mySubject = student.map( item => {
+    //   return item.subject;
+    // })
+    // return `${myStudentName} receives a perfect score on ${mySubject}`
+  }
+  standUp(){
+
+  }
+  debugsCode(){
+    
+  } 
+}
   /*
     STRETCH PROBLEM (no tests!)
       - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
