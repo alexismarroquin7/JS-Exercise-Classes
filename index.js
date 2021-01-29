@@ -235,11 +235,11 @@ class ProjectManager extends Instructor {
   grade(student, subject){
     return `${student.name} receives a perfect score on ${subject}`
   }
-  standUp(){
-
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
   }
-  debugsCode(){
-
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
   } 
 }
   /*
