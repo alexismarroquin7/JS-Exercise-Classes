@@ -233,21 +233,13 @@ class ProjectManager extends Instructor {
     this.favInstructor = attrs.favInstructor;
   }
   grade(student, subject){
-    // return `${student} receives a perfect score on ${subject}`
-    const myStudentName = student.map(function(item) {
-      return item.name;
-    });
-    return `${myStudentName} receives a perfect score on ${subject}`
-    // const mySubject = student.map( item => {
-    //   return item.subject;
-    // })
-    // return `${myStudentName} receives a perfect score on ${mySubject}`
+    return `${student.name} receives a perfect score on ${subject}`
   }
   standUp(){
 
   }
   debugsCode(){
-    
+
   } 
 }
   /*
