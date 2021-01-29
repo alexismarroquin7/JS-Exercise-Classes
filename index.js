@@ -87,41 +87,22 @@ class Car {
     return this.tank = this.tank + gallons;
   }
   drive(distance){
-  //   const range = this.tank * this.milesPerGallon;
-  //   if(distance < range && this.tank > 0){
-  //     this.odometer++;
-  //     this.tank--;
-  //   } else {
-  //     this.odometer = this.tank * this.milesPerGallon;
-  //     // this.tank = 0;
-  //     return `I ran out of fuel at ${this.odometer} miles!`
+    const range = this.tank * this.milesPerGallon;
+    if(range < distance){
+      this.odometer = range;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`
+    } else {
+      this.odometer += distance;
+      this.tank = this.tank - (distance / this.milesPerGallon);
+    }
   }
-
-  // drive(distance){
-  //   const range = this.milesPerGallon * this.tank;
-  //   // console.log(`The distance desired is ${distance} miles`);
-  //   // console.log(`The Tank is at ${this.tank} gallons`);
-  //   // console.log(`The milesPerGallon is ${this.milesPerGallon}`);
-  //   // console.log(`The range is ${range}`);
-  //   for(let i = 0; i <= range; i++){
-  //       this.odometer = this.odometer + 1;
-  //       this.tank = this.tank - 1;
-  //       console.log(this.odometer);
-  //       console.log(this.tank);
-  //       if(this.tank === 0){
-  //         this.tank = 0;
-  //         return `I ran out of gas at ${this.odometer} miles`
-  //       }
-  //   }
-
-  // }
-  
 }
 
-// const myCar = new Car('Toyota', 5);
-// console.log(myCar.fill(10));
-// console.log(myCar.milesPerGallon);
-// console.log(myCar.drive(50));
+const myCar = new Car('Toyota', 5);
+console.log(myCar.fill(10));
+console.log(myCar.milesPerGallon);
+console.log(myCar.drive(50));
 
   
   /*
